@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>pikselbua</title>
     <link rel="stylesheet" href="Style.css">
 </head>
+
 <body>
     <nav>
         <a href="index.html" id="logo">pikselbua</a>
@@ -26,36 +28,73 @@
 
         <button id="buttonright" class="buttons" onclick="plusDivs(+1)">&#10095;</button>
     </section>
+
     <section class="typekort">
-<button class="typebuttons">
-    <span class="catsvg" data-icon="computers-laptops"></span>
-</button>
-<button class="typebuttons">
-    <span class="catsvg" data-icon="phones-tablets"></span>
-</button>
-<button class="typebuttons">
-    <span class="catsvg" data-icon="pc-components"></span>
-</button>
-<button class="typebuttons">
-    <span class="catsvg" data-icon="monitors-displays"></span>
-</button>
-<button class="typebuttons">
-    <span class="catsvg" data-icon="gaming-accessories"></span>
-</button>
-<button class="typebuttons">
-    <span class="catsvg" data-icon="audio-headphones"></span>
-</button>
-<button class="typebuttons">
-    <span class="catsvg" data-icon="keyboards-mice"></span>
-</button>
-<button class="typebuttons">
-    <span class="catsvg" data-icon="tvs-home-entertainment"></span>
-</button>
-<button class="typebuttons">
-    <span class="catsvg" data-icon="smart-home-iot"></span>
-</button>
+        <button class="typebuttons">
+            <span class="catsvg" data-icon="computers-laptops"></span>
+        </button>
+        <button class="typebuttons">
+            <span class="catsvg" data-icon="phones-tablets"></span>
+        </button>
+        <button class="typebuttons">
+            <span class="catsvg" data-icon="pc-components"></span>
+        </button>
+        <button class="typebuttons">
+            <span class="catsvg" data-icon="monitors-displays"></span>
+        </button>
+        <button class="typebuttons">
+            <span class="catsvg" data-icon="gaming-accessories"></span>
+        </button>
+        <button class="typebuttons">
+            <span class="catsvg" data-icon="audio-headphones"></span>
+        </button>
+        <button class="typebuttons">
+            <span class="catsvg" data-icon="keyboards-mice"></span>
+        </button>
+        <button class="typebuttons">
+            <span class="catsvg" data-icon="tvs-home-entertainment"></span>
+        </button>
+        <button class="typebuttons">
+            <span class="catsvg" data-icon="smart-home-iot"></span>
+        </button>
     </section>
+
+    <section class="utvalg">
+        <select name="velg tiss" id="">
+            <option value="Featured">Featured</option>
+            <option value="LTH">Low to high</option>
+            <option value="HTL">high to low</option>
+            <option value="HR">Highest rating</option>
+            <option value="LR">Lowest rating</option>
+        </select>
+        <select name="Stock" id="">
+            <option value="All">All products</option>
+            <option value="Lager">In stock</option>
+            <option value="ILager">Out of stock</option>
+        </select>
+        <select name="Vurdering" id="">
+            <option value="Alle">All products</option>
+            <option value="EnTilTre">1 to 2 stars</option>
+            <option value="3to4">3 to 4 stars</option>
+            <option value="5to6">5 to 6 stars</option>
+        </select>
+        <div>
+            <label for="Fra">Fra:</label>
+            <input type="text" id="Fra" name="Fra">
+        </div>
+        <div>
+            <label for="Til">Til:</label>
+            <input type="text" id="Til" name="Til">
+        </div>
+    </section>
+
+    <section class="produkter">
+
+    </section>
+
+
 </body>
-    <script src="script.js"></script>    
-    <script src="icons.js" defer></script>
+<script src="script.js"></script>
+<script src="icons.js" defer></script>
+
 </html>
