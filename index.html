@@ -17,17 +17,45 @@
     </nav>
 
     <section class="slides">
+        <button id="buttonleft" class="buttons" onclick="plusDivs(-1)">&#10094;</button>
+
         <img class="mySlides" src="bilder/slides/Slide1.webp">
         <img class="mySlides" src="bilder/slides/Slide2.webp">
         <img class="mySlides" src="bilder/slides/Slide3.webp">
         <img class="mySlides" src="bilder/slides/Slide4.webp">
 
-        <button class="w3-button w3-display-left"
-        onclick="plusDivs(-1)">&#10094;</button>
-
-        <button class="w3-button w3-display-right"
-        onclick="plusDivs(+1)">&#10095;</button>
+        <button id="buttonright" class="buttons" onclick="plusDivs(+1)">&#10095;</button>
+    </section>
+    <section class="typekort">
+<button class="typebuttons">
+    <span class="catsvg" data-icon="computers-laptops"></span>
+</button>
+<button class="typebuttons">
+    <span class="catsvg" data-icon="phones-tablets"></span>
+</button>
+<button class="typebuttons">
+    <span class="catsvg" data-icon="pc-components"></span>
+</button>
+<button class="typebuttons">
+    <span class="catsvg" data-icon="monitors-displays"></span>
+</button>
+<button class="typebuttons">
+    <span class="catsvg" data-icon="gaming-accessories"></span>
+</button>
+<button class="typebuttons">
+    <span class="catsvg" data-icon="audio-headphones"></span>
+</button>
+<button class="typebuttons">
+    <span class="catsvg" data-icon="keyboards-mice"></span>
+</button>
+<button class="typebuttons">
+    <span class="catsvg" data-icon="tvs-home-entertainment"></span>
+</button>
+<button class="typebuttons">
+    <span class="catsvg" data-icon="smart-home-iot"></span>
+</button>
     </section>
 </body>
     <script src="script.js"></script>    
+    <script src="icons.js" defer></script>
 </html>
