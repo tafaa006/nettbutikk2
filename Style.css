@@ -59,8 +59,13 @@ nav a:hover {
     padding: 0;
     font: inherit;
     cursor: pointer;
+    transition: 0.2s;
 }
 
+.slides button:hover {
+    width: 3.2rem;
+    height: 3.2rem;
+}
 
 
 #buttonleft {
@@ -101,17 +106,6 @@ nav a:hover {
     color: rgb(0, 175, 175);
 }
 
-.produkter {
-    display: flex;
-    width: 80%;
-    height: 100vh;
-    background-color: black;
-    justify-self: center;
-    margin: 3vh;
-    background-color: #F5F5F7;
-    border-radius: 2vh;
-}
-
 .utvalg {
     display: flex;
     justify-content: center;
@@ -135,4 +129,59 @@ nav a:hover {
 .utvalg label {
     color: #2B4246;
     font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.produkter {
+    display: grid;
+    grid-template-columns: repeat(4, 25%);
+    grid-auto-rows: 20rem;
+    width: 80%;
+    height: auto;
+    justify-self: center;
+    margin: 3vh;
+    background-color: #F5F5F7;
+    border-radius: 2vh;
+}
+
+.Produkt {
+    display: flex;
+    background-color: white;
+    border-radius: 0.4rem;
+    margin: 1rem;
+    flex-direction: column;
+}
+
+.Produkt img{
+    width: 20vh;
+    height: 20vh;
+    margin: 0.5rem;
+    align-self: center;
+}
+
+.Produkt p{
+    color: rgb(0, 175, 175);
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 5%;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 2vh;
+}
+
+.Produkt h2{
+    color: #2B4246;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 5%;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: auto;
+}
+
+.Produkt h3{
+    color: #4ecb86;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 5%;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: auto;
 }
