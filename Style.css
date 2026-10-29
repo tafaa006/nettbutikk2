@@ -160,7 +160,6 @@ nav a:hover {
 }
 
 .Produkt p{
-    color: rgb(0, 175, 175);
     font-family: Arial, Helvetica, sans-serif;
     margin-left: 5%;
     margin-top: 0;
@@ -184,4 +183,44 @@ nav a:hover {
     margin-top: 0;
     margin-bottom: 0;
     font-size: auto;
+}
+
+.vurdering {
+    color: #2B4246;
+}
+
+.ting {
+    color:rgb(0, 175, 175);
+}
+
+.vispris {
+    display: flex;
+}
+
+#pjis {
+    color: #2B4246;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 5%;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.Knappene {
+    display: flex;
+    justify-content: left;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.Knappene a{
+    text-decoration: none;
+    background-color: #2B4246;
+    color: white;
+    width: 100%;
+    height: 2rem;
+    font-size: 1rem;
+    border-radius: 0.2rem;
+    text-align: center;
+    align-content: center;
+    font-family: Arial, Helvetica, sans-serif;
 }
