@@ -1,4 +1,7 @@
-// icons.js — alle ikonene mine i en fil, enklere for å bytte farge. laget av claude
+// icons.js — all category icons in one file.
+// Usage: <span data-icon="phones-tablets"></span>  +  <script src="icons.js" defer></script>
+// Color them with CSS `color` (they use currentColor). Size them with CSS width/height on `.icon`.
+
 const ICONS = {
   "computers-laptops": `<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
   <mask id="laptop-m">
@@ -124,9 +127,28 @@ const ICONS = {
     <rect x="35.5" y="5" width="5" height="14" rx="1.5"/>
     <rect x="19" y="17" width="26" height="18" rx="4"/>
   </g>
+</svg>`,
+
+  "shopping-cart": `<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <g fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 9h7a2.5 2.5 0 0 1 2.4 1.8L22 44"/>
+    <path d="M21 46.5h32"/>
+  </g>
+  <mask id="cart-m">
+    <rect width="64" height="64" fill="#fff"/>
+    <path d="M27 24v11M36.5 24v11M46 24v11" stroke="#000" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="27" cy="56" r="1.6" fill="#000"/>
+    <circle cx="47" cy="56" r="1.6" fill="#000"/>
+  </mask>
+  <g fill="currentColor" mask="url(#cart-m)">
+    <path d="M14 17h45l-6.5 23a3 3 0 0 1-2.9 2.2H24.5a3 3 0 0 1-2.9-2.2z"/>
+    <circle cx="27" cy="56" r="4.5"/>
+    <circle cx="47" cy="56" r="4.5"/>
+  </g>
 </svg>`
 };
 
+// Replace every <... data-icon="name"> with its SVG
 document.querySelectorAll("[data-icon]").forEach((el) => {
   const svg = ICONS[el.dataset.icon];
   if (svg) el.innerHTML = svg;
