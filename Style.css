@@ -296,6 +296,10 @@ nav a:hover {
     width: 100%;
 }
 
+.fjern_alt {
+  
+}
+
 @media (max-width: 900px) {
     #handlekurvListe {
         grid-template-columns: repeat(2, minmax(0, 1fr));

@@ -31,6 +31,12 @@ function opptater() {
   }
 }
 
+function slett_alt() {
+  fjern_kruv(Array.every())
+  save_kurv();
+  opptater();
+}
+
 function leggtil_kruv(produktId) {
   if (produkter.some((produkt) => produkt.id === Number(produktId))) {
     handlekurv.push(Number(produktId));
