@@ -32,8 +32,9 @@ function opptater() {
 }
 
 function slett_alt() {
-  fjern_kruv(Array.every())
+  handlekurv = [];
   save_kurv();
+  vis_kurv();
   opptater();
 }
 
@@ -127,24 +128,53 @@ function byggProduktKort(produkt) {
   `;
 }
 
-function initProdukter() {
-  const productsContainer = document.querySelector(".produkter");
+function visProdukter(liste) {
+  const productsContainer = document.getElementById("produktContainer");
   if (!productsContainer) {
     return;
   }
 
-  produkter.forEach((produkt) => {
-    productsContainer.insertAdjacentHTML("beforeend", byggProduktKort(produkt));
+  if (liste.length === 0) {
+    productsContainer.innerHTML = '<p class="ingen-treff">Ingen produkter funnet.</p>';
+    return;
+  }
+
+  productsContainer.innerHTML = liste.map((produkt) => byggProduktKort(produkt)).join("");
+}
+
+function initProdukter() {
+  const productsContainer = document.getElementById("produktContainer");
+  const sokefelt = document.getElementById("sokefelt");
+  if (!productsContainer) {
+    return;
+  }
+
+  visProdukter(produkter);
+
+  productsContainer.addEventListener("click", (event) => {
+    const knapp = event.target.closest("[data-legg-i-handlekurv]");
+    if (!knapp || !productsContainer.contains(knapp)) {
+      return;
+    }
+
+    leggtil_kruv(knapp.dataset.leggIHandlekurv);
+    knapp.textContent = "Lagt i handlekurven";
   });
 
-  document.querySelectorAll("[data-legg-i-handlekurv]").forEach((knapp) => {
-    knapp.addEventListener("click", (event) => {
-      event.preventDefault();
-      event.stopPropagation();
-      leggtil_kruv(knapp.dataset.leggIHandlekurv);
-      knapp.textContent = "Lagt i handlekurven";
+  if (sokefelt) {
+    sokefelt.addEventListener("input", () => {
+      const sok = sokefelt.value.trim().toLocaleLowerCase("nb-NO");
+      const resultat = produkter.filter((produkt) => {
+        const kategori = Array.isArray(produkt.kategori)
+          ? produkt.kategori.join(" ")
+          : produkt.kategori;
+
+        return `${produkt.navn} ${kategori}`.toLocaleLowerCase("nb-NO").includes(sok);
+      });
+
+      visProdukter(resultat);
     });
-  });
+  }
 }
 
 // --- slideshow ---
