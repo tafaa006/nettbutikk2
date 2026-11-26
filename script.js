@@ -1,21 +1,9 @@
-const Kategorier = [
-  "computers-laptops",
-  "phones-tablets",
-  "pc-components",
-  "monitors-displays",
-  "gaming-accessories",
-  "audio-headphones",
-  "keyboards-mice",
-  "tvs-home-entertainment",
-  "smart-home-iot"
-];
-
 const produkter = [
-  { id: 1, navn: "Headset", pris: 1600, kategori: [Kategorier[5], Kategorier[6]], stock: 11, stars: 4, bilde: "bilder/produkter/headset.jpg" },
-  { id: 2, navn: "Mus", pris: 1600, kategori: Kategorier[6], stock: 11, stars: 4, bilde: "bilder/produkter/mus.jpg" },
-  { id: 3, navn: "Ram", pris: 1600, kategori: Kategorier[2], stock: 11, stars: 4, bilde: "bilder/produkter/ram.jpg" },
-  { id: 4, navn: "Skjerm", pris: 1600, kategori: Kategorier[3], stock: 11, stars: 4, bilde: "bilder/produkter/skjerm.jpg" },
-  { id: 5, navn: "Tastatur", pris: 1600, kategori: Kategorier[6], stock: 11, stars: 4, bilde: "bilder/produkter/tastatur.jpg" },
+  { id: 1, navn: "Headset", pris: 1600, kategori: "Lyd og hodetelefoner", stock: 11, stars: 4, featured: true, bilde: "bilder/produkter/headset.jpg" },
+  { id: 2, navn: "Mus", pris: 1600, kategori: "Tastatur og mus", stock: 11, stars: 4, featured: false, bilde: "bilder/produkter/mus.jpg" },
+  { id: 3, navn: "Ram", pris: 1600, kategori: "PC-komponenter", stock: 11, stars: 4, featured: true, bilde: "bilder/produkter/ram.jpg" },
+  { id: 4, navn: "Skjerm", pris: 1600, kategori: "Skjermer", stock: 11, stars: 3, featured: false, bilde: "bilder/produkter/skjerm.jpg" },
+  { id: 5, navn: "Tastatur", pris: 1600, kategori: "Tastatur og mus", stock: 11, stars: 4, featured: false, bilde: "bilder/produkter/tastatur.jpg" },
 ];
 
 let handlekurv = JSON.parse(localStorage.getItem("handlekurv") || "[]");
@@ -70,7 +58,6 @@ function vis_kurv() {
       return "";
     }
 
-    const categoryText = Array.isArray(produkt.kategori) ? produkt.kategori.join(", ") : produkt.kategori;
     const stars = "★".repeat(produkt.stars) + "☆".repeat(5 - produkt.stars);
 
     return `
@@ -78,7 +65,7 @@ function vis_kurv() {
         <div class="image-frame">
           <img class="bilde" src="${produkt.bilde}" alt="${produkt.navn}">
         </div>
-        <p class="ting">${categoryText}</p>
+        <p class="ting">${produkt.kategori}</p>
         <h2>${produkt.navn}</h2>
         <p class="vurdering">
           <span class="stjerner">${stars}</span> ${produkt.stars}.0
@@ -104,7 +91,6 @@ function vis_kurv() {
 }
 
 function byggProduktKort(produkt) {
-  const categoryText = Array.isArray(produkt.kategori) ? produkt.kategori.join(", ") : produkt.kategori;
   const stars = "★".repeat(produkt.stars) + "☆".repeat(5 - produkt.stars);
 
   return `
@@ -112,7 +98,7 @@ function byggProduktKort(produkt) {
       <div class="image-frame">
         <img src="${produkt.bilde}" alt="${produkt.navn}">
       </div>
-      <p class="ting">${categoryText}</p>
+      <p class="ting">${produkt.kategori}</p>
       <h2>${produkt.navn}</h2>
       <p class="vurdering">
         <span class="stjerner">${stars}</span> ${produkt.stars}.0
@@ -149,6 +135,30 @@ function initProdukter() {
     return;
   }
 
+  const kategoriKnapper = document.querySelectorAll(".typebuttons");
+  let valgtKategori = "";
+
+  kategoriKnapper.forEach((knapp) => {
+    knapp.addEventListener("click", () => {
+      const kategori = knapp.dataset.kategori;
+
+      if (valgtKategori === kategori) {
+        valgtKategori = "";
+        knapp.setAttribute("aria-pressed", "false");
+        visProdukter(produkter);
+      } else {
+        valgtKategori = kategori;
+        kategoriKnapper.forEach((kategoriKnapp) => {
+          kategoriKnapp.setAttribute("aria-pressed", String(kategoriKnapp === knapp));
+        });
+        const filtrerteProdukter = produkter.filter(
+          (produkt) => produkt.kategori === kategori
+        );
+        visProdukter(filtrerteProdukter);
+      }
+    });
+  });
+
   visProdukter(produkter);
 
   productsContainer.addEventListener("click", (event) => {
@@ -164,13 +174,9 @@ function initProdukter() {
   if (sokefelt) {
     sokefelt.addEventListener("input", () => {
       const sok = sokefelt.value.trim().toLocaleLowerCase("nb-NO");
-      const resultat = produkter.filter((produkt) => {
-        const kategori = Array.isArray(produkt.kategori)
-          ? produkt.kategori.join(" ")
-          : produkt.kategori;
-
-        return `${produkt.navn} ${kategori}`.toLocaleLowerCase("nb-NO").includes(sok);
-      });
+      const resultat = produkter.filter((produkt) =>
+        `${produkt.navn} ${produkt.kategori}`.toLocaleLowerCase("nb-NO").includes(sok)
+      );
 
       visProdukter(resultat);
     });
